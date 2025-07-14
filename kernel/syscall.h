@@ -15,6 +15,7 @@
 #define SYS_kill    37
 #define SYS_dup     41
 #define SYS_pipe    42 // freebsd10_pipe on freebsd
+#define SYS_reboot  55
 #define SYS_fstat   62 // old fstat on freebsd
 #define SYS_sbrk    69
 #define SYS_mkdir   136

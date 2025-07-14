@@ -79,6 +79,18 @@ sys_kill(void)
   return kill(pid);
 }
 
+uint64
+sys_reboot(void)
+{
+  int cmd;
+
+  argint(0, &cmd);
+  register uint64 a7 asm("a7") = 8;
+  asm volatile("ecall" : : "r"(a7) : "memory");
+  printf("If you're seeting this message you're a failure\n");
+  return 0;
+}
+
 // return how many clock tick interrupts have occurred
 // since start.
 uint64
