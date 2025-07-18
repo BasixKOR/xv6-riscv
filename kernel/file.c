@@ -22,7 +22,9 @@ struct {
 void
 fileinit(void)
 {
+  extern struct spinlock readcountlock;
   initlock(&ftable.lock, "ftable");
+  initlock(&readcountlock, "readcount");
 }
 
 // Allocate a file structure.
@@ -89,7 +91,7 @@ filestat(struct file *f, uint64 addr)
 {
   struct proc *p = myproc();
   struct stat st;
-  
+
   if(f->type == FD_INODE || f->type == FD_DEVICE){
     ilock(f->ip);
     stati(f->ip, &st);
@@ -179,4 +181,3 @@ filewrite(struct file *f, uint64 addr, int n)
 
   return ret;
 }
-
