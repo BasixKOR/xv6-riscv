@@ -23,6 +23,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 void reboot(void);
+int getreadcount(void);
 
 // ulib.c
 int stat(const char*, struct stat*);
